@@ -5,17 +5,19 @@
 #include <vector>
 #include <tuple>
 #include <unordered_map>
-#include <set>
+#include <unordered_set>
 
 class Graph {
     private:
-        std::unordered_map<std::string, std::unordered_map<std::string, std::set<std::tuple<std::string, double, std::string>>>> adj_list;
+        std::unordered_map<std::string, std::string> node_map;
+        std::unordered_map<std::string, std::unordered_set<std::string>> adj_list;
+        std::unordered_map<std::string, std::unordered_map<std::string,std::unordered_set<std::tuple<std::string, double, std::string>>>> relationship;
     public:
-        void node(std::string country_code, std::string country_name);
-        void edges(std::vector<std::string> codes, std::string series_code, std::string relation, double limit);
-        std::vector<std::string> adjacent(std::string code);
-        std::vector<std::tuple<std::string, double, std::string>> reltionship(std::string code_one, std::string code_two);
-        bool path(std::string code_one, std::string code_two);
+        void initalize(CountryTotal countires[512]);
+        void update_edges(std::string series_code, double threshold, std::string relation);
+        void adjacent(std::string country_code);
+        void path(std::string country_code_1, std::string country_code_2);
+        void relationships(std::string country_code_1, std::string country_code_2);
 };
 
 
