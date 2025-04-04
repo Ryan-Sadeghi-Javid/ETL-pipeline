@@ -686,3 +686,7 @@ void CountryStorage::insert(std::string country_code, std::string filename) {
     file.close();
     std::cout<<"success"<<std::endl;
 }
+
+CountryTotal* CountryStorage::get_country_storage_array() {
+    return country_storage;
+}

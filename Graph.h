@@ -5,13 +5,13 @@
 #include <vector>
 #include <tuple>
 #include <unordered_map>
-#include <unordered_set>
+#include <set>
 
 class Graph {
     private:
-        std::unordered_map<std::string, std::string> node_map;
-        std::unordered_map<std::string, std::unordered_set<std::string>> adj_list;
-        std::unordered_map<std::string, std::unordered_map<std::string,std::unordered_set<std::tuple<std::string, double, std::string>>>> relationship;
+        std::unordered_map<std::string, CountryTotal> node_map;
+        std::unordered_map<std::string, std::set<std::string>> adj_list;
+        std::unordered_map<std::string, std::unordered_map<std::string,std::set<std::tuple<std::string, double, std::string>>>> relationship;
     public:
         void initalize(CountryTotal countires[512]);
         void update_edges(std::string series_code, double threshold, std::string relation);

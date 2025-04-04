@@ -38,6 +38,8 @@ class CountryStorage {
         void lookup(std::string country_code);
         void remove(std::string country_code);
         void insert(std::string country_code, std::string filename);
+        CountryTotal* get_country_storage_array();
+
 };
 
 #endif

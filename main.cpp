@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
 #include "CountryStorage.h"
+#include "Graph.h"
 int main() {
     CountryStorage cs;
+    Graph graph;
     std::string command; // String to contain the users command
     // Infinite loop of user commands until the "exit" command 
     while (std::cin >> command) {
@@ -69,6 +71,33 @@ int main() {
         std::string filename;
         std::cin >> country_code >> filename;
         cs.insert(country_code,filename);
+    }
+    else if(command == "INITIALIZE") {
+        graph.initalize(cs.get_country_storage_array());
+    }
+    else if(command == "UPDATE_EDGES") {
+        std::string series_code_input;
+        double threshold;
+        std::string relation;
+        std::cin >> series_code_input >> threshold >> relation;
+        graph.update_edges(series_code_input, threshold, relation);
+    }
+    else if(command == "ADJACENT") {
+        std::string country_code;
+        std::cin >> country_code;
+        graph.adjacent(country_code);
+    }
+    else if(command == "PATH") {
+        std::string country_code_1;
+        std::string country_code_2;
+        std::cin >> country_code_1 >> country_code_2;
+        graph.path(country_code_1, country_code_2);
+    }
+    else if(command == "RELATIONSHIPS") {
+        std::string country_code_1;
+        std::string country_code_2;
+        std::cin >> country_code_1 >> country_code_2;
+        graph.relationships(country_code_1, country_code_2);
     }
     else if(command == "EXIT") { // Handeling the users "EXIT" command
         return 0;
