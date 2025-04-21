@@ -15,16 +15,6 @@ Command-Line Interface: Fully interactive command system supporting data loading
 
 Efficient Memory Management: Implements dynamic memory allocation with deep copy/move semantics to optimize performance.
 
-📁 Project Structure
-bash
-Copy
-Edit
-├── main.cpp               # Command-line parser and control flow
-├── CountryStorage.cpp/h   # Data ingestion and BST building
-├── CountryTotal.cpp/h     # Manages individual country time series
-├── TimeSeries.cpp/h       # Time series data structure with analytics
-├── Graph.cpp/h            # Graph implementation with edge relationships
-├── ECE250 Project 5.pdf   # Project spec
 📊 Technologies Used
 C++ (Object-Oriented Design)
 
