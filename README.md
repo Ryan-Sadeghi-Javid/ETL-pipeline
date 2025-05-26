@@ -1,56 +1,54 @@
-🌍 ECE250 Project 5 – Country Relationship ETL Graph
-This project implements an ETL-based data pipeline and analytics system in C++ that ingests time-series statistics for countries, transforms them using statistical analysis, and models relationships as a dynamic graph structure. The system enables querying countries based on trends in health, agriculture, economics, or other time-series metrics.
+# 🌍 ECE250 Project 5 – Country Relationship ETL Graph
 
-🚀 Overview
-The project reads large CSV datasets of country statistics, parses and transforms the data into structured TimeSeries objects, then builds a binary search tree (BST) and graph-based relational model. Relationships between countries are encoded as edges if they share a statistical pattern based on a chosen metric and threshold.
+A high-performance ETL-based data pipeline and analytics system written in C++. This project processes time-series country statistics, transforms them using statistical analysis, and models relationships between countries as a dynamic, queryable graph. It supports interactive CLI-based analysis for exploring trends in health, agriculture, economics, and other key metrics.
 
-🛠️ Features
-Custom ETL Pipeline: Parses, processes, and stores over 500 country records and 60 years of historical data.
+---
 
-Binary Search Tree (BST): Organizes countries based on statistical means to support fast range queries and deletions.
+## 🚀 Overview
 
-Graph-Based Relationship Engine: Detects relationships between countries based on time-series statistics and forms a bidirectional, labeled graph.
+This project reads large CSV datasets of country-level time-series data, parses and transforms them into structured `TimeSeries` objects, and builds:
+- A **Binary Search Tree (BST)** to support fast range queries and country lookups
+- A **Graph-based model** where edges represent statistically similar relationships between countries
 
-Command-Line Interface: Fully interactive command system supporting data loading, range queries, graph building, relationship analysis, and adjacency/path searches.
+---
 
-Efficient Memory Management: Implements dynamic memory allocation with deep copy/move semantics to optimize performance.
+## 🛠️ Features
 
-📊 Technologies Used
-C++ (Object-Oriented Design)
+- **Custom ETL Pipeline**  
+  Parses, processes, and stores over 500 country records and 60 years of historical data from raw CSVs
 
-Custom Hashing & Collision Handling
+- **Binary Search Tree (BST)**  
+  Organizes countries based on statistical means for efficient range queries and deletions
 
-Binary Search Trees
+- **Graph-Based Relationship Engine**  
+  Detects pairwise country relationships using time-series similarity and builds a bidirectional, labeled graph
 
-Graph Data Structures (Adjacency Lists, Tuples)
+- **Command-Line Interface (CLI)**  
+  Fully interactive system supporting data loading, BST construction, graph generation, relationship analysis, and traversal queries
 
-Dynamic Memory Management
+- **Efficient Memory Management**  
+  Implements dynamic allocation with custom destructors, deep copy, and move semantics to ensure optimal performance
 
-Command-Driven Architecture
+---
 
-📌 Example Commands
-LOAD filename.csv – Load dataset
+## 📊 Technologies & Concepts
 
-BUILD AG.LND.AGRI.ZS – Build BST using agriculture land data
+- `C++` (Object-Oriented Design)
+- Custom hashing and collision handling
+- Binary Search Trees
+- Graphs (Adjacency Lists, Weighted Edges, Tuples)
+- Dynamic memory management
+- Command-driven architecture
 
-INITIALIZE – Initialize empty graph with country nodes
+---
 
-UPDATE_EDGES AG.LND.AGRI.ZS 80 greater – Add edges between countries with >80% land use for agriculture
+## 🧪 Example Commands
 
-ADJACENT CAN – List countries related to Canada
-
-PATH USA IND – Check if a connection exists between the USA and India
-
-RELATIONSHIPS BRA ARG – List shared statistical relationships between Brazil and Argentina
-
-🧠 Learning Highlights
-STL containers: unordered_map, set, tuple
-
-File I/O and CSV parsing using sstream
-
-Algorithm design for BFS, data partitioning, and BST traversal
-
-Memory management: destructor, deep copy, move semantics
-
-📜 License
-This project is for academic purposes as part of the University of Waterloo’s ECE250 course.
+```text
+LOAD filename.csv                        # Load country data from file
+BUILD AG.LND.AGRI.ZS                     # Build BST using agricultural land (% of total) data
+INITIALIZE                               # Initialize graph with country nodes
+UPDATE_EDGES AG.LND.AGRI.ZS 80 greater   # Connect countries with >80% land used for agriculture
+ADJACENT CAN                             # List countries related to Canada
+PATH USA IND                             # Check if a path exists between USA and India
+RELATIONSHIPS BRA ARG                    # List shared metrics between Brazil and Argentina
